@@ -1,11 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Building forms</title>
+  </head>
+  <body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+      <form class="flex flex-col gap-4" action="#" method="post">
+        <div class="flex flex-col gap-6">
+          <div class="flex gap-2 items-center">
+            <label class="min-w-[110px]" for="name">Повне ім'я</label>
+            <input
+              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+              type="text"
+              id="name"
+              required
+            />
+          </div>
+
+          <div class="flex gap-2 items-center">
+            <label class="min-w-[110px]" for="email">Email</label>
+            <input
+              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+              type="email"
+              id="email"
+              required
+            />
+          </div>
+
+          <div class="flex gap-2 items-center">
+            <label class="min-w-[110px]" for="password">Пароль</label>
+            <input
+              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+              type="password"
+              id="password"
+              required
+            />
+          </div>
+
+          <div class="flex gap-2 items-center">
+            <label class="min-w-[110px]" for="confirm-password"
+              >Пароль ще раз</label
+            >
+            <input
+              class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+              type="password"
+              id="confirm-password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex gap-2 items-center">
+          <label class="min-w-[110px]">Стать</label>
+          <div class="flex gap-1 items-center">
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              value="male"
+              checked
+              required
+            />
+            <label for="male">чоловіча</label>
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">жіноча</label>
+          </div>
+        </div>
+
+        <div class="flex gap-2 items-center">
+          <label class="min-w-[110px]" for="age">Вік</label>
+          <input
+            class="w-20 px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+            type="number"
+            id="age"
+            name="age"
+            min="1"
+            max="120"
+            required
+          />
+        </div>
+
+        <div class="flex gap-2 items-center">
+          <label class="min-w-[110px]" for="course">Курс</label>
+          <select
+            class="w-18 px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100"
+            id="course"
+            name="course"
+            required
+          >
+            <option value="" disabled selected>-=Виберіть курс=-</option>
+            <option value="frontend">Front-End</option>
+            <option value="backend">Back-End</option>
+          </select>
+        </div>
+
+        <div class="flex gap-2 items-end">
+          <label class="min-w-[110px]" for="address">Повна адреса</label>
+          <textarea
+            class="w-full px-4 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-100 resize-none"
+            id="address"
+            name="address"
+            rows="4"
+            placeholder="Країна, регіон, місто/селище, вулиця"
+            required
+          ></textarea>
+        </div>
+
+        <div class="flex gap-2">
+          <input
+            class="mt-1"
+            type="checkbox"
+            id="terms"
+            name="terms"
+            required
+          />
+          <label for="terms">Я погоджуюсь з обробкою персональних даних</label>
+        </div>
+
+        <div class="flex gap-6 pl-14">
+          <button
+            type="reset"
+            class="px-4 py-2 rounded-md bg-gray-300 hover:bg-gray-400 border border-gray-300 cursor-pointer transition-colors duration-200"
+          >
+            Очистити форму
+          </button>
+          <button
+            type="submit"
+            class="px-4 py-2 rounded-md bg-gray-300 hover:bg-gray-400 border border-gray-300 cursor-pointer transition-colors duration-200"
+          >
+            Зареєструватися
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirm-password").value;
+        
+
+        if (password !== confirmPassword) {
+          e.preventDefault();
+          alert("Паролі не співпадають!")
+        
+        }
+      });
+    </script>
+  </body>
 </html>
